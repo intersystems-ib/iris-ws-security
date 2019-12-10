@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="5ee6e83b-2073-4286-8d30-295c7c470e3e" activeEnvironment="Default" name="Test.MyWebService.cls" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="ef9eafa2-936a-4963-a0c3-ceaf177c4d34" wsaVersion="NONE" name="MySOAPServiceSoap" type="wsdl" bindingName="{IrisSec}MySOAPServiceSoap" soapVersion="1_1" anonymous="optional" definition="file:/Users/afuentes/Downloads/Test.MyWebService.cls.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/Users/afuentes/Downloads/Test.MyWebService.cls.xml"><con:part><con:url>file:/Users/afuentes/Downloads/Test.MyWebService.cls.xml</con:url><con:content><![CDATA[<definitions targetNamespace="IrisSec" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="IrisSec" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="IrisSec">
+      <s:element name="MyMethod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" name="arg1" type="s:decimal"/>
+            <s:element minOccurs="0" name="arg2" type="s:decimal"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MyMethodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="MyMethodResult" type="s:decimal"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </types>
+  <message name="MyMethodSoapIn">
+    <part name="parameters" element="s0:MyMethod"/>
+  </message>
+  <message name="MyMethodSoapOut">
+    <part name="parameters" element="s0:MyMethodResponse"/>
+  </message>
+  <portType name="MySOAPServiceSoap">
+    <operation name="MyMethod">
+      <input message="s0:MyMethodSoapIn"/>
+      <output message="s0:MyMethodSoapOut"/>
+    </operation>
+  </portType>
+  <binding name="MySOAPServiceSoap" type="s0:MySOAPServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="MyMethod">
+      <soap:operation soapAction="IrisSec/Test.MyWebService.MyMethod" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="MySOAPService">
+    <port name="MySOAPServiceSoap" binding="s0:MySOAPServiceSoap">
+      <soap:address location="http://localhost:52773/csp/user/Test.MyWebService.cls"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:52773/csp/user/Test.MyWebService.cls</con:endpoint><con:endpoint>https://localhost/csp/user/Test.MyWebService.cls</con:endpoint></con:endpoints><con:operation id="45e93b92-1ddf-45a4-9efd-68f7f915e409" isOneWay="false" action="IrisSec/Test.MyWebService.MyMethod" name="MyMethod" bindingOperationName="MyMethod" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d126d7e5-93e8-4cc6-b0d7-b0f226269e1b" name="Request 1" outgoingWss="outgoing"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:52773/csp/user/Test.MyWebService.cls</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:iris="IrisSec">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <iris:MyMethod>
+         <!--Optional:-->
+         <iris:arg1>1</iris:arg1>
+         <!--Optional:-->
+         <iris:arg2>1</iris:arg2>
+      </iris:MyMethod>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:preemptive>false</con:preemptive><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="IrisSec/Test.MyWebService.MyMethod"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer><con:crypto><con:source>/Users/afuentes/Documents/ISC/workspace/iris-ws-security/shared/certs/server.p12</con:source><con:password>1234</con:password><con:type>KEYSTORE</con:type></con:crypto><con:outgoing mustUnderstand="false"><con:name>outgoing</con:name><con:password/><con:entry type="Encryption" username="1" password="1234"><con:configuration><crypto>server.p12</crypto><keyIdentifierType>1</keyIdentifierType><symmetricEncAlgorithm/><encKeyTransport/><embeddedKeyName/><embeddedKeyPassword/><encryptionCanonicalization/><encryptSymmetricKey>true</encryptSymmetricKey></con:configuration></con:entry><con:entry type="Timestamp"><con:configuration><timeToLive>5</timeToLive><strictTimestamp>true</strictTimestamp></con:configuration></con:entry></con:outgoing></con:wssContainer><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
