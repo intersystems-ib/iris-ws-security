@@ -13,13 +13,13 @@ docker-compose up
 
 # IRIS
 ## IRIS As Certificate Authority (CA)
-*System Administration > Security > Publick Key Infraestructure*
+*System Administration > Security > Public Key Infraestructure*
 1. Configure local Certificate Authority Server:
 * irisLocalCA.cer - local certificate authority
 * irisLocalCA.key - private key
 * irisLocalCA.srl - serial number
 
-## Create certificates signed by CA
+## Create certificates signed by CA
 Generate an example certificate.
 
 1. Configure local Certificate Authority client: use local IRIS web port, so we can send CSR to local IRIS CA
